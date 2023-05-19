@@ -7,7 +7,10 @@ import {
   adjustForMissingHash,
   renderTemplate,
   loadTemplate,
+  handleHttpErrors
 } from "./utils.js";
+
+import { API_URL } from "./settings.js";
 
 import { initEvents } from "./pages/events/events.js";
 import { initNews } from "./pages/news/news.js";
@@ -101,3 +104,14 @@ window.addEventListener("load", async () => {
     );
   };
 });
+
+getNews();
+
+async function getNews(){
+  const data = await fetch(API_URL + "news/?unpaged").then(handleHttpErrors);
+  data.sort((a, b) => a.priority - b.priority);
+
+  document.getElementById('news-headline').innerText = data[0].headline;
+  document.getElementById('news-text').innerText = data[0].textField;
+  document.getElementById("news-img").src = data[0].encodedImage;
+}
