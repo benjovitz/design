@@ -33,7 +33,7 @@ export async function initNews(pg,match){
         const p = match?.params?.page || pg 
         let pageNo = Number(p)
         let queryString =  `?sort=priority,asc&size=${SIZE}&page=` + (pageNo-1)
-        let navigoRef = `?page=` + (pageNo)
+        let navigoRef = `/news/?page=` + (pageNo)
 
         try {
             const news = await fetch(URL+queryString).then(handleHttpErrors)
