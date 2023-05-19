@@ -56,25 +56,8 @@ integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jI
                     <h1 id="news-headline">NYHED!</h1>
                     <img src="news-demo.png" id="news-img" style="width: 100%;height: auto;border: solid 1px black" height="150px" alt="">
                     <p id="news-text">Loading...</p>
-                    <p id="news-priority">Loading...</p>
                 </div>
             </div>
-
-            <script>
-                fetch('http://localhost:8080/api/news/')
-                .then(response => response.json())
-                .then(data => {
-
-
-                    data.sort((a, b) => a.priority - b.priority);
-
-                    document.getElementById('news-headline').innerText = data[0].headline;
-                    document.getElementById('news-text').innerText = data[0].textField;
-                    document.getElementById('news-priority').innerText = 'Priority: ' + data[0].priority;
-                })
-                .catch(error => console.error('Error:', error));
-            </script>
-
         </div>
         </div>
     </section>
