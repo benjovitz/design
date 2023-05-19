@@ -113,5 +113,5 @@ async function getNews(){
 
   document.getElementById('news-headline').innerText = data[0].headline;
   document.getElementById('news-text').innerText = data[0].textField;
-  document.getElementById("news-img").src = data[0].encodedImage;
+  document.getElementById("news-img").src="data:image/jpeg;base64,"+data[0].encodedImage;
 }
